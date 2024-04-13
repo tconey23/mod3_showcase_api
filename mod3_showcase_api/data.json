@@ -1,0 +1,19 @@
+[
+  {
+    "activities": [
+      "fidgets*",
+      "zen garden*",
+      "waveform*",
+      "sandbox*"
+    ]
+  },
+  {
+    "users": [
+      {
+        "name": "",
+        "stats": [],
+        "favorites": []
+      }
+    ]
+  }
+]
