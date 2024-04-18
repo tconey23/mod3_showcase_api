@@ -136,6 +136,4 @@ app.listen(3001, () => {
     console.log('Server is running on port 3001');
 });
 
-//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
-
 
