@@ -52,6 +52,11 @@ app.get('/api/v1/affirmations', (req, res) => {
     res.json(getRandomAffirmation)
   });
 
+  app.get('/', (req, res) => {
+    const getRandomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)]
+    res.json(getRandomAffirmation)
+  });
+
   app.get('/api/v1/data/users/:id', (req, res) => {
     const id = req.params.id
     const findUser = app.locals.persistentData.users.find((user) => user.id === `${id}`)
