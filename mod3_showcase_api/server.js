@@ -1,9 +1,10 @@
 const express = require('express');
 const fs = require('fs');
 const affirmations = require('./affirmations');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
 const app = express();
-
+app.use(cors());
+app.use(express.json());
 let persistentData = {};
 
 try {
@@ -12,8 +13,8 @@ try {
     console.error('Error reading data file:', err);
 }
 
-app.use(express.json());
-app.use(cors()); // Use the cors middleware to enable CORS
+
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -96,18 +97,7 @@ app.put('/api/v1/data/active_user', (req, res) => {
     fs.writeFileSync('data.json', JSON.stringify(app.locals.persistentData, null, 2));
 
     res.json({ message: `${activeUser} updated successfully`, updatedUser: app.locals.persistentData.active_user  })
-        // if (!app.locals.persistentData.users[userIndex][dataKey]) {
-        //     app.locals.persistentData.users[userIndex][dataKey] = [];
-        // }
-        // const duplicateRecord = app.locals.persistentData.users[userIndex][dataKey].includes(newData[dataKey])
-        // if(!duplicateRecord){
-        //     app.locals.persistentData.users[userIndex][dataKey].push(newData[dataKey]);
-        //     fs.writeFileSync('data.json', JSON.stringify(app.locals.persistentData, null, 2));
-        //     res.json({ message: `${dataKey} updated successfully`, updatedUser: app.locals.persistentData.users[userIndex] })
-        // }else {
-        //     res.json('Duplicate Record')
-        // }
-});;
+});
 
 app.post('/data', (req, res) => {
     const newData = req.body; 
@@ -132,8 +122,8 @@ app.post('/data', (req, res) => {
 });
 
 
-app.listen(3001, () => {
-    console.log('Server is running on port 3001'); 
-});
+// app.listen(3001, () => {
+//     console.log('Server is running on port 3001'); 
+// });
  
 
