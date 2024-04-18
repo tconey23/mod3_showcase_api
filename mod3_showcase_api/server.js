@@ -35,7 +35,7 @@ app.get('/api/v1/data/:endpoint', (req, res) => {
     } else {
         res.status(404).json({ error: "Endpoint not found" });
     }
-});
+});        
 
 app.get('/api/v1/data/activities/:endpoint', (req, res) => {
     const endpoint = req.params.endpoint
